@@ -2,7 +2,7 @@ package test.rea.robot.models;
 
 import java.lang.String;
 import lombok.*;
-import test.rea.robot.Direction;
+import test.rea.robot.enums.Direction;
 
 @AllArgsConstructor
 @NoArgsConstructor

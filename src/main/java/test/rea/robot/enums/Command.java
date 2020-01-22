@@ -1,4 +1,4 @@
-package test.rea.robot;
+package test.rea.robot.enums;
 
 public enum Command {
     PLACE,
