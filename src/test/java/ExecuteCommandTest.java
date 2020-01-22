@@ -4,12 +4,13 @@ import test.rea.robot.enums.Direction;
 import test.rea.robot.ExecuteCommand;
 import test.rea.robot.exceptions.InvalidPositionException;
 import test.rea.robot.exceptions.RobotException;
+import test.rea.robot.interfaces.ICommand;
 import test.rea.robot.models.Robot;
 
 import java.util.logging.Logger;
 
 public class ExecuteCommandTest {
-    ExecuteCommand executeCommand = new ExecuteCommand();
+    ICommand executeCommand = new ExecuteCommand();
     Logger logger = Logger.getLogger("ExecuteCommandTest");
     @Test
     public void testExecutePlace() throws InvalidPositionException {

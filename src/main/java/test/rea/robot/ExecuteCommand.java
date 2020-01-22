@@ -5,19 +5,33 @@ import test.rea.robot.enums.Command;
 import test.rea.robot.enums.Direction;
 import test.rea.robot.exceptions.InvalidPositionException;
 import test.rea.robot.exceptions.RobotException;
-import test.rea.robot.interfaces.Icommand;
+import test.rea.robot.interfaces.ICommand;
 import test.rea.robot.models.Robot;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static test.rea.robot.Constants.*;
 
-public class ExecuteCommand implements Icommand {
+public class ExecuteCommand implements ICommand {
     Logger logger = Logger.getLogger("test.rea.robot.ExecuteCommand");
 
+    /**
+     * this method checks if the placement position specified is valid
+     * @param x
+     * @param y
+     * @return
+     */
     private boolean isValidPosition(Integer x, Integer y){
         return !(x>X_MAX || x<X_MIN || y>Y_MAX || y<Y_MIN);
     }
 
+    /**
+     * This method places the robot as per the specified co-ordinates on the grid
+     * @param x
+     * @param y
+     * @param direction
+     * @param robot
+     * @throws InvalidPositionException
+     */
     public void executePlace(Integer x, Integer y, Direction direction, Robot robot) throws InvalidPositionException{
         logger.log(Level.INFO,"Received request to place robot "+robot);
         if(x!=null && y!=null && direction !=null && robot.getIsPlacedOnTable()!=null && !robot.getIsPlacedOnTable()){
@@ -37,6 +51,10 @@ public class ExecuteCommand implements Icommand {
         }
     }
 
+    /**
+     * This method turns the robot to the left of the direction it is currently facing
+     * @param robot
+     */
     public void turnLeft(Robot robot){
         if(robot !=null && robot.getIsPlacedOnTable()) {
             Direction direction = robot.getDirection();
@@ -57,6 +75,10 @@ public class ExecuteCommand implements Icommand {
         }
     }
 
+    /**
+     * This method turns the robot to the left of the direction it is currently facing
+     * @param robot
+     */
     public void turnRight(Robot robot) {
         if(robot !=null && robot.getIsPlacedOnTable()) {
             Direction direction = robot.getDirection();
@@ -85,6 +107,10 @@ public class ExecuteCommand implements Icommand {
         }
     }
 
+    /**
+     * This method moves the robot as per the specified co-ordinates and direction
+     * @param robot
+     */
     public void move(Robot robot) {
             Integer x = robot.getX();
             Integer y = robot.getY();
